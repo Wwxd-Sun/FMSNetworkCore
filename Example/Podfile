@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'FMSNetworkCore_Example' do
+  pod 'FMSNetworkCore', :path => '../'
+
+  target 'FMSNetworkCore_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
