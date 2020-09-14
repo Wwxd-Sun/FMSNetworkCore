@@ -1,0 +1,68 @@
+#!/bin/bash
+
+#使用方法 
+project_path=$(pwd)
+echo "+ 当前目录 ${project_path}"
+
+####################   git 本次提交tag，用户输入   ##################################
+echo -e "Please enter the tag submitted this time "
+
+read git_tag_num
+
+while([ ! -n "$git_tag_num" ])
+do
+echo -e "Please enter the tag submitted this time "
+read git_tag_num
+done
+
+
+####################   git 提交内容描述   ##################################
+echo -e "Please enter the content description of this submission "
+
+read git_commit_content
+echo "本次提交的内容描述为：$git_commit_content"
+
+while([ ! -n "$git_commit_content" ])
+do
+echo -e "Please enter the content description of this submission "
+read git_commit_content
+done
+
+####################   根据自己项目手动配置以下   ##################################
+
+#podspec 私有库配置名称 自动获取，注意修改工程后缀名 podspec/xcodeproj/xcworkspace
+podspec_name=$(find . -name '*.podspec' | awk -F "[/.]" '{print $(NF-1)}')
+
+echo "podspec name ++++++ $podspec_name ++++++"
+
+# 远程 pod 公共库名称, 用户手动配置
+pod_repo_name="FMSNetworkCore"
+
+
+####################   根据自己项目手动配置以上   ##################################
+
+git add .
+echo "本地版本库提交成功"
+
+git commit -a -m ${git_commit_content}
+echo "本地版本库提交描述内容成功, 内容为：${git_commit_content}"
+
+git pull origin master --allow-unrelated-histories
+echo "本地版本库提交成功"
+
+git push origin master
+echo "本地版本库推送远端成功"
+
+git tag ${git_tag_num}
+echo "本地版本库tag添加成功，tag值为：$git_tag_num"
+
+git push origin ${git_tag_num}
+echo "tag 推送到远端成功"
+
+# 沉睡5秒，查看上面提交是否正确
+sleep 5
+
+# pod 库 推送到远程公共库
+pod repo push ${pod_repo_name} ${podspec_name}.podspec --verbose --use-libraries --allow-warnings
+
+exit 0

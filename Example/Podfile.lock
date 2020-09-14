@@ -1,0 +1,45 @@
+PODS:
+  - Alamofire (4.9.1)
+  - FMSNetworkCore (0.0.1):
+    - Alamofire (= 4.9.1)
+    - ModelProtocol (= 0.1.0)
+    - RxCocoa (= 5.1.1)
+    - RxSwift (= 5.1.1)
+  - ModelProtocol (0.1.0):
+    - SwiftyJSON (~> 4.2.0)
+  - RxCocoa (5.1.1):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxRelay (5.1.1):
+    - RxSwift (~> 5)
+  - RxSwift (5.1.1)
+  - SwiftyJSON (4.2.0)
+
+DEPENDENCIES:
+  - FMSNetworkCore (from `../`)
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - ModelProtocol
+    - RxCocoa
+    - RxRelay
+    - RxSwift
+    - SwiftyJSON
+
+EXTERNAL SOURCES:
+  FMSNetworkCore:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  FMSNetworkCore: 8fac9f44af1df52be743fd8f407bf593be20cdc3
+  ModelProtocol: e7be7d227c0ff494fcfef75a616af637f0f81f4b
+  RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
+  RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
+  RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
+  SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
+
+PODFILE CHECKSUM: 89ae6d682c00458385595b86cf95aed605891784
+
+COCOAPODS: 1.9.3
